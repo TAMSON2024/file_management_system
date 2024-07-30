@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Search Files</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" name="query" class="form-control" placeholder="Search files">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+            <ul class="list-group">
+                {% for file in files %}
+                    <li class="list-group-item">
+                        <a href="{{ url_for('download_file', file_id=file.id) }}">{{ file.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
